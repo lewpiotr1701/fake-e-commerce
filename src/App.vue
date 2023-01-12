@@ -1,15 +1,19 @@
 <template>
   <v-app>
-    <v-app-bar title="Application"></v-app-bar>
+    <AppBar />
 
-    <v-navigation-drawer>...</v-navigation-drawer>
-
-    <v-main>...</v-main>
+    <v-main>
+      content from App.vue
+    </v-main>
   </v-app>
 </template>
 
 <script>
+import AppBar from './views/AppBar.vue'
 
+export default {
+  components: { AppBar }
+}
 </script>
 
 <style scoped>
