@@ -22,29 +22,6 @@ import NavigationDrawer from '../components/NavigationDrawer.vue'
 
 export default {
   components: { NavigationDrawer },
-  data() {
-    return {
-      drawer: false,
-      items: [
-        {
-          title: 'Foo',
-          value: 'foo',
-        },
-        {
-          title: 'Bar',
-          value: 'bar',
-        },
-        {
-          title: 'Fizz',
-          value: 'fizz',
-        },
-        {
-          title: 'Buzz',
-          value: 'buzz',
-        },
-      ],
-    }
-  },
   methods: {
     toggleTheme() {
       this.$store.state.theme === 'light'
