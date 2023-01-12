@@ -1,14 +1,19 @@
 <template>
-  <div>
-    {{ product }}
-  </div>
+
+  {{ product }}
+  <ProductCard />
+
 </template>
 
 <script>
 import ProductService from '../services/ProductService.js'
+import ProductCard from '../components/ProductCard.vue'
 import { watchEffect } from 'vue'
 
 export default {
+  components: {
+    ProductCard
+  },
   data() {
     return {
       product: null
@@ -23,3 +28,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+</style>
