@@ -1,10 +1,6 @@
 <template>
-  <v-app>
+  <v-app :theme="theme">
     <AppBar />
-
-    <v-main>
-      content from App.vue
-    </v-main>
   </v-app>
 </template>
 
@@ -12,7 +8,14 @@
 import AppBar from './views/AppBar.vue'
 
 export default {
-  components: { AppBar }
+  components: {
+    AppBar
+  },
+  computed: {
+    theme() {
+      return this.$store.state.theme
+    }
+  }
 }
 </script>
 
