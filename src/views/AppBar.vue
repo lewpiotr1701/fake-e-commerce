@@ -6,9 +6,8 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn :prepend-icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'"
-      @click.stop="toggleTheme">Toggle
-      Theme</v-btn>
+    <v-btn :icon="theme === 'light' ? 'mdi-weather-sunny' : 'mdi-weather-night'" @click.stop="toggleTheme"
+      class="pa-0"></v-btn>
 
     <v-btn variant="text" icon="mdi-basket"></v-btn>
     <v-btn variant="text" icon="mdi-account"></v-btn>
