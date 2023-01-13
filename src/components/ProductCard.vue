@@ -1,13 +1,16 @@
 <template>
-  <v-card class="mx-auto" max-width="344">
-    <v-img src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg" height="200px" cover></v-img>
+  <v-card class="mx-auto bg-grey-lighten-4" max-width="344" elevation="12">
+
+    <v-carousel hide-delimiters show-arrows="hover" height="200px">
+      <v-carousel-item v-for="(image, i) in product.images" :key="i" :src="image" cover></v-carousel-item>
+    </v-carousel>
 
     <v-card-title>
-      Top western road trips
+      {{ product.title }}
     </v-card-title>
 
     <v-card-subtitle>
-      1,000 miles of wonder
+      {{ product.price }} $
     </v-card-subtitle>
 
     <v-card-actions>
@@ -25,10 +28,7 @@
         <v-divider></v-divider>
 
         <v-card-text>
-          I'm a thing. But, like most politicians, he promised more than he could deliver. You won't have time for
-          sleeping, soldier, not with all the bed making you'll be doing. Then we'll go with that data file! Hey, you
-          add a one and two zeros to that or we walk! You're going to do his laundry? I've got to find a way to escape.
-        </v-card-text>
+          {{ product.description }} </v-card-text>
       </div>
     </v-expand-transition>
   </v-card>
