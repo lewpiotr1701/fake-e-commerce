@@ -1,7 +1,14 @@
 <template>
 
-  {{ product }}
-  <ProductCard />
+  <v-container>
+    <v-row>
+      <v-col v-for="product in products" :key="product.id" cols="12" xs="12" sm="6" md="4" lg="3">
+        <v-sheet elevation="12">
+          <ProductCard />
+        </v-sheet>
+      </v-col>
+    </v-row>
+  </v-container>
 
 </template>
 
@@ -16,13 +23,14 @@ export default {
   },
   data() {
     return {
-      product: null
+      products: [],
+      len: 3
     }
   },
   created() {
     watchEffect(() => {
-      ProductService.getProduct(1)
-        .then(res => this.product = res.data)
+      ProductService.getProducts()
+        .then(res => this.products = res.data.products)
         .catch(err => console.log(err))
     })
   }

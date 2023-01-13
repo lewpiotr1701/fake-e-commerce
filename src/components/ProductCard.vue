@@ -36,6 +36,7 @@
 
 <script>
 export default {
+  props: ['product'],
   data() {
     return {
       show: false
