@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer v-model="isDrawer" location="left" temporary>
+  <v-navigation-drawer v-model="drawer" location="left" temporary>
     <v-list>
 
       <router-link :to="{ name: 'Homepage' }">
@@ -11,15 +11,21 @@
       </router-link>
 
       <v-divider></v-divider>
+
+      <router-link :to="{ name: 'ProductList' }">
+        <v-list-item prepend-icon="mdi-view-list" title="Products" link></v-list-item>
+      </router-link>
+
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
 export default {
+  props: ['isDrawer'],
   computed: {
-    isDrawer() {
-      return this.$store.state.isDrawer
+    drawer() {
+      return this.isDrawer
     }
   }
 }

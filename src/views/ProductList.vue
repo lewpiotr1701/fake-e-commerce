@@ -11,31 +11,25 @@
 </template>
     
 <script>
-import ProductService from '../services/ProductService.js'
 import ProductCard from '../components/ProductCard.vue'
-import { watchEffect } from 'vue'
+
+import store from '@/store/index.js'
 
 export default {
   components: {
     ProductCard
   },
-  data() {
-    return {
-      products: [],
-      len: 3
-    }
+  async beforeRouteEnter() {
+    await store.dispatch('getProducts')
   },
-  created() {
-    watchEffect(() => {
-      ProductService.getProducts()
-        .then(res => this.products = res.data.products)
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
-    })
+  computed: {
+    products() {
+      return store.state.products
+    }
   }
 }
 </script>
     
-<style style scoped >
+<style style scoped>
 
 </style>

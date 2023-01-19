@@ -14,10 +14,11 @@
     </v-card-subtitle>
 
     <v-card-actions>
-      <v-btn color="orange-lighten-2" variant="text">
-        Explore
-      </v-btn>
-
+      <router-link :to="{ name: 'ProductDetails', params: { id: product.id } }">
+        <v-btn color="orange-lighten-2" variant="text">
+          Explore
+        </v-btn>
+      </router-link>
       <v-spacer></v-spacer>
 
       <v-btn :icon="show ? 'mdi-chevron-up' : 'mdi-chevron-down'" @click="show = !show"></v-btn>
@@ -36,7 +37,12 @@
 
 <script>
 export default {
-  props: ['product'],
+  props: {
+    product: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
       show: false
@@ -46,5 +52,8 @@ export default {
 </script>
 
 <style scoped>
-
+a {
+  text-decoration: none;
+  color: inherit;
+}
 </style>
