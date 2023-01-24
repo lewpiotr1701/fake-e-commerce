@@ -30,6 +30,8 @@ export default createStore({
         const products = res.data.products
         commit('SET_PRODUCTS', products)
       } catch (err) {
+        console.log('dupa')
+        console.log(err)
         if (err.response) {
           // The client was given an error response (5xx, 4xx)
           console.log(err.response.data);
