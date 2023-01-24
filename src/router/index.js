@@ -22,7 +22,12 @@ const routes = [
     path: '/product-list/:id',
     name: 'ProductDetails',
     component: () => import('@/views/ProductDetails.vue'),
-    props: true
+    props: route => ({ id: parseInt(route.params.id) })
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    name: 'NotFound',
+    component: () => import('@/views/NotFound.vue')
   }
 ]
 

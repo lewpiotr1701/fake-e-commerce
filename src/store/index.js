@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import ProductService from '@/services/ProductService.js'
+import router from '../router'
 
 export default createStore({
   state: {
@@ -30,36 +31,35 @@ export default createStore({
         const products = res.data.products
         commit('SET_PRODUCTS', products)
       } catch (err) {
-        console.log('dupa')
-        console.log(err)
         if (err.response) {
           // The client was given an error response (5xx, 4xx)
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
+          console.log(err.response)
+          router.push({ name: 'NotFound' })
         } else if (err.request) {
           // The client never received a response, and the request was never left
+          console.log(err.request)
         } else {
           // Anything else
+          console.log(err)
         }
       }
     },
     async getProduct({ commit }, id) {
       try {
         const res = await ProductService.getProduct(id)
-        console.log(res)
-        const product = res.data.products[0]
+        const product = res.data
         commit('SET_PRODUCT', product)
       } catch (err) {
         if (err.response) {
           // The client was given an error response (5xx, 4xx)
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
+          console.log(err.response)
+          router.push({ name: 'NotFound' })
         } else if (err.request) {
           // The client never received a response, and the request was never left
+          console.log(err.request)
         } else {
           // Anything else
+          console.log(err)
         }
       }
     }

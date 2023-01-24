@@ -12,7 +12,6 @@
     
 <script>
 import ProductCard from '../components/ProductCard.vue'
-
 import store from '@/store/index.js'
 
 export default {
