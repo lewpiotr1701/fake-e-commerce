@@ -9,9 +9,12 @@
       {{ product.title }}
     </v-card-title>
 
-    <v-card-subtitle>
-      {{ product.price }} $
+    <v-card-subtitle class="d-flex flex-row justify-space-between align-center">
+      <div>{{ product.price }} $</div>
+      <v-rating v-model="rating" readonly half-increments color="blue" density="compact"></v-rating>
     </v-card-subtitle>
+
+
 
     <v-card-actions>
       <router-link :to="{ name: 'ProductDetails', params: { id: product.id } }">
@@ -45,7 +48,8 @@ export default {
   },
   data() {
     return {
-      show: false
+      show: false,
+      rating: this.product.rating
     }
   }
 }
