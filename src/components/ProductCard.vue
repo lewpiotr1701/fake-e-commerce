@@ -14,8 +14,6 @@
       <v-rating v-model="rating" readonly half-increments color="blue" density="compact"></v-rating>
     </v-card-subtitle>
 
-
-
     <v-card-actions>
       <router-link :to="{ name: 'ProductDetails', params: { id: product.id } }">
         <v-btn color="orange-lighten-2" variant="text">

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="product">
     {{ product.brand }}
   </div>
 </template>
@@ -10,11 +10,6 @@ export default {
     id: {
       type: Number,
       required: true
-    }
-  },
-  data() {
-    return {
-      product: this.$store.state.product
     }
   },
   created() {
@@ -29,6 +24,11 @@ export default {
       // already being observed
       { immediate: true }
     )
+  },
+  computed: {
+    product() {
+      return this.$store.state.product
+    }
   }
 }
 </script>
