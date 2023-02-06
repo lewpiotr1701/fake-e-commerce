@@ -4,15 +4,18 @@
     <v-main>
       <router-view></router-view>
     </v-main>
+    <AppFooter />
   </v-app>
 </template>
 
 <script>
 import AppBar from './views/AppBar.vue'
+import AppFooter from './views/AppFooter.vue'
 
 export default {
   components: {
-    AppBar
+    AppBar,
+    AppFooter
   },
   computed: {
     theme() {
