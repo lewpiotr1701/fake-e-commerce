@@ -1,5 +1,7 @@
 <template>
-  <v-container>
+  <v-progress-circular v-if="isLoading" class="progress-circular" model-value="20" size="94" width="10"
+    indeterminate></v-progress-circular>
+  <v-container v-else>
     <v-row>
       <v-col v-for="product in products" :key="product.id" cols="12" xs="12" sm="6" md="4" lg="3">
         <ProductCard :product="product" />

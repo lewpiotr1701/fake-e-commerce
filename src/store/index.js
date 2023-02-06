@@ -37,15 +37,15 @@ export default createStore({
       try {
         const res = await ProductService.getProducts()
         const products = res.data.products
+        commit('TOGGLE_LOADING')
         commit('SET_PRODUCTS', products)
       } catch (err) {
+        commit('TOGGLE_LOADING')
         if (err.response && err.response.status == 404) {
           router.push({ name: 'NotFound' })
         } else {
           router.push({ name: 'NetworkError' })
         }
-      } finally {
-        commit('TOGGLE_LOADING')
       }
     },
     async getProduct({ commit, state }, id) {
