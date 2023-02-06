@@ -1,5 +1,5 @@
 <template>
-  <div v-if="product">
+  <div v-if="product" class="product-view">
     {{ product.brand }}
   </div>
 </template>
@@ -34,9 +34,13 @@ export default {
 </script>
 
 <style scoped>
-div {
+.product-view {
   display: flex;
   justify-content: center;
-  text-align: center;
+  align-items: center;
+  width: 400px;
+  height: 400px;
+  margin: 100px auto 0;
+  background-color: red;
 }
 </style>

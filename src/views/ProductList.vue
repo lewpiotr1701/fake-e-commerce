@@ -1,6 +1,5 @@
 <template>
-  <v-progress-circular v-if="isLoading" class="progress-circular" model-value="20" size="94" width="10"
-    indeterminate></v-progress-circular>
+  <v-progress-circular v-if="isLoading" class="progress-circular" model-value="20" size="94" width="10" indeterminate />
   <v-container v-else>
     <v-row>
       <v-col v-for="product in products" :key="product.id" cols="12" xs="12" sm="6" md="4" lg="3">
@@ -8,6 +7,10 @@
       </v-col>
     </v-row>
   </v-container>
+
+  <div v-if="isProductOpen" @click.self="closeModal" class="modal-bg">
+    <router-view></router-view>
+  </div>
 
 </template>
     
@@ -19,21 +22,8 @@ export default {
   components: {
     ProductCard
   },
-  // async beforeRouteEnter() {
-  //   await store.dispatch('getProducts')
-  // },
   created() {
-    // watch the params of the route to fetch the data again
-    this.$watch(
-      // pass a function that returns what we want to watch fro changes
-      () => this.$route.params,
-      () => {
-        this.$store.dispatch('getProducts')
-      },
-      // fetch the data when the view is created and the data is
-      // already being observed
-      { immediate: true }
-    )
+    this.$store.dispatch('getProducts')
   },
   computed: {
     products() {
@@ -41,6 +31,14 @@ export default {
     },
     isLoading() {
       return store.state.isLoading
+    },
+    isProductOpen() {
+      return this.$route.name === 'ProductDetails'
+    }
+  },
+  methods: {
+    closeModal() {
+      this.$router.push({ name: 'ProductList' })
     }
   }
 }
@@ -52,5 +50,14 @@ export default {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.modal-bg {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
 }
 </style>

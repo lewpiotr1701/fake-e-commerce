@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Homepage from '@/views/Homepage.vue'
 import ProductList from '@/views/ProductList.vue'
+import ProductDetails from '@/views/ProductDetails.vue'
 
 const routes = [
   {
@@ -16,13 +17,15 @@ const routes = [
   {
     path: '/product-list',
     name: 'ProductList',
-    component: ProductList
-  },
-  {
-    path: '/product-list/:id',
-    name: 'ProductDetails',
-    component: () => import('@/views/ProductDetails.vue'),
-    props: route => ({ id: parseInt(route.params.id) })
+    component: ProductList,
+    children: [
+      {
+        path: 'product/:id',
+        name: 'ProductDetails',
+        component: ProductDetails,
+        props: route => ({ id: parseInt(route.params.id) })
+      }
+    ]
   },
   {
     path: '/:pathMatch(.*)*',
